@@ -5,6 +5,9 @@ import java.util.LinkedHashMap;
 import java.util.Scanner;
 import static java.util.stream.Collectors.*;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -12,7 +15,7 @@ import static java.util.Map.Entry.*;
 
 public class FrequencyCounter {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		
 		Scanner sc = new Scanner (System.in);
 		Character [] alphabet = {'А','Б','В','Г','Д','Ѓ','Е','Ж','З','Ѕ','И','Ј','К','Л','Љ','М','Н','Њ','О','П','Р','С','Т','Ќ','У','Ф','Х','Ц','Ч','Џ','Ш'};
@@ -21,6 +24,8 @@ public class FrequencyCounter {
 		HashMap<String,Double> twoLettersFr1 = new HashMap<>();
 		HashMap<String,Double> couplesSorted = new HashMap<>();
 		HashMap<Character,Double> lettersSorted = new HashMap<>();
+		PrintWriter pw1 = new PrintWriter("C:\\Users\\Stefan\\Desktop\\Kriptografija\\frekvencijaNaBukvi.csv", "UTF-8");
+		PrintWriter pw2 = new PrintWriter("C:\\Users\\Stefan\\Desktop\\Kriptografija\\frekvencijaNaParovi.csv", "UTF-8");
 		double numOfLetters = 0;
 		double numOfCouples = 0;
 		String cipheredMessage = sc.next();
@@ -82,15 +87,13 @@ public class FrequencyCounter {
 				.collect(
 						toMap(e->e.getKey(), e->e.getValue(), (e1,e2)->e2, LinkedHashMap::new));
 				
-		System.out.println(lettersSorted.size()+" "+lettersSorted.toString());
-		System.out.println(couplesSorted.size()+" "+couplesSorted.toString());
 		
-		
-		
-		
-			
-		
-		
+		for (char c : lettersSorted.keySet())
+			pw1.println(c+"- "+String.format("%.5f", lettersSorted.get(c)));
+		pw1.flush();
+		for (String c : couplesSorted.keySet())
+			pw2.println(c+"-"+String.format("%.5f", couplesSorted.get(c)));
+		pw2.flush();
 		
 		
 	}
