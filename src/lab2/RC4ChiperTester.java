@@ -104,6 +104,7 @@ public class RC4ChiperTester {
 		}
 		
 		String message = "Stefan";
+		System.out.println("Original message: "+message);
 		String encrypted,decrypted;
 		encrypted = rc4.encryption(keys[0], message);
 		decrypted = rc4.decryption(keys[0], encrypted);
