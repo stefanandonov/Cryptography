@@ -111,7 +111,7 @@ class FeistelFunction
     	byte row, col;
     	row = (byte) (((input & 0x20) >> 4) | input & 0x01);
     	col = (byte) ((input & 0x1E) >> 1);
-
+    	//System.out.println(String.format("SBOX %d [%d][%d] = %d", SBoxNum+1, row, col, S_BOX[SBoxNum][row][col])); //izmeneto
         return S_BOX[SBoxNum][row][col];
     }
 

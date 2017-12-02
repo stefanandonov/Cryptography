@@ -1,4 +1,5 @@
 package lab3;
+import java.math.*;
 
 
 public class DES
@@ -124,6 +125,7 @@ public class DES
    	// does all 16 rounds of DES
    	for (int i = 0; i < DES.NUM_OF_ROUNDS; i++)
    	{
+   		//System.out.println("Runda "+ (i+1)); //izmeneto
    		if (encrypt)
    			FOutput = feistel.F(rightHalf, roundKeys[i]);
    		else
@@ -136,6 +138,7 @@ public class DES
    		leftHalf ^= rightHalf;
    		rightHalf ^= leftHalf;
    		leftHalf ^= rightHalf;
+   		System.out.println("Runda"+(i+1)+"\n"+Integer.toBinaryString(leftHalf)+Integer.toBinaryString(rightHalf) + "\nKluc: "+ roundKeys[i]);
    	}
 
    	// reconstruct a 64 bit block from the two halves (which get swapped)
