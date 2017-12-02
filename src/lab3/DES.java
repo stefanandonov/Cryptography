@@ -6,7 +6,7 @@ public class DES
    protected final static long MASK_6_BITS     = 0xFC0000000000L;
    protected final static long MASK_32_BITS    = 0xFFFFFFFFL;
    protected final static int  MASK_28_BITS    = 0x0FFFFFFF;
-	protected final static int  NUM_OF_ROUNDS   = 16;
+	protected static int  NUM_OF_ROUNDS   = 16;
 
    /**
     * Values for the Initial Permutation (IP) step.
