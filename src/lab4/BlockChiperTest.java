@@ -226,14 +226,8 @@ class BlockChiper {
 	}
 	
 	
-	public String cutBlock(int numBlock) {
-		
-		return blocks.get(numBlock-1);
-		
-	}
-	
-	public void pasteBlock(int numBlock, String block) {
-		blocks.add(numBlock-1,block);
+	public String cutBlock(int numBlock) {		
+		return blocks.get(numBlock-1);		
 	}
 	
 	public void swapBlocks(int b1, int b2) {
@@ -243,11 +237,9 @@ class BlockChiper {
 			pom=b2;
 			b2=b1;
 			b1=pom;
-		}
-		
+		}		
 		String block1 = cutBlock(b1);
-		String block2 = cutBlock(b2);
-		
+		String block2 = cutBlock(b2);		
 		newBlocks.addAll(blocks.subList(0, b1-1));
 		newBlocks.add(block2);
 		newBlocks.addAll(blocks.subList(b1, b2-1));
@@ -257,9 +249,15 @@ class BlockChiper {
 		blocks=newBlocks;
 	}
 	
+	public void deleteBlock(int bNumber){
+		blocks.remove(bNumber-1);
+	}
+	
 	public String toString() {
 		return blocks.toString();
 	}
+	
+	
 }
 
 public class BlockChiperTest {
@@ -278,15 +276,16 @@ public class BlockChiperTest {
 		System.out.println(bc1.decryptCBC(10));	*/
 		
 		String message = "Money for Alice is $100 Money for Trudy is $2";
-		BlockChiper bc = new BlockChiper(message,0);
+		BlockChiper bc = new BlockChiper(message,0xabcfff1211045fffL);
 		System.out.println(bc.toString());
-		
-		String c = bc.encrypt(10);
+		String c = bc.encryptCBC(10);
 		System.out.println("Enkriptiranata poraka e: "+c);
-		BlockChiper bc1 = new BlockChiper(c,0);
-		bc1.swapBlocks(6, 3);
+		BlockChiper bc1 = new BlockChiper(c,0xabcfff1211045fffL);
+		bc1.deleteBlock(2);
+		bc1.deleteBlock(2);
+		bc1.deleteBlock(2);
 		System.out.println(bc1.toString());
-		String m = bc1.decrypt(10);
+		String m = bc1.decryptCBC(10);
 		System.out.println("Dekriptirata poraka posle napad cut-and-paste: "+m);
 		
 		
