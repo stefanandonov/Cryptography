@@ -92,10 +92,28 @@ public class DESTester {
 		System.out.println(Long.toBinaryString(des.encrypt(M1, K)));*/
 		
 		//zadaca 2
-		DES.NUM_OF_ROUNDS=16;
-		long M=0xFFFABCD;
+		/*DES.NUM_OF_ROUNDS=16;
+		String m = "StefanAn";
+		long M = messageToLong(m);
+		
 		long K=0;
-		System.out.println(Long.toBinaryString(des.encrypt(M, K)));
+		System.out.println(longToMessage(des.encrypt(M, K)));
+		System.out.println(longToMessage(des.decrypt(messageToLong("??9??	"), K)));*/
+		
+		//lab5 zadaca
+		String m = "StefanAn";
+		long M = messageToLong(m);
+		DES.NUM_OF_ROUNDS=16;
+		
+		try {
+			PrintWriter pw = new PrintWriter(new FileWriter(new File("izlez.txt")));
+			pw.println(longToMessage(des.encrypt(M, 0)));
+			pw.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
 		
 	}
 

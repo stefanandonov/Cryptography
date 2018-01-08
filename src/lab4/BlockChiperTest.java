@@ -275,7 +275,7 @@ public class BlockChiperTest {
 		BlockChiper bc1 = new BlockChiper(c,0xffff);
 		System.out.println(bc1.decryptCBC(10));	*/
 		
-		String message = "Money for Alice is $100 Money for Trudy is $2";
+		/*String message = "Money for Alice is $100 Money for Trudy is $2";
 		BlockChiper bc = new BlockChiper(message,0xabcfff1211045fffL);
 		System.out.println(bc.toString());
 		String c = bc.encryptCBC(10);
@@ -286,7 +286,17 @@ public class BlockChiperTest {
 		bc1.deleteBlock(2);
 		System.out.println(bc1.toString());
 		String m = bc1.decryptCBC(10);
-		System.out.println("Dekriptirata poraka posle napad cut-and-paste: "+m);
+		System.out.println("Dekriptirata poraka posle napad cut-and-paste: "+m);*/
+		
+		//lab 5 zadaca
+		
+		String recievedMessage = "Krw\"a\"lknwgw\"kz\"Erwjw\"zk\"Opabwj.\"vw\"zw\"oa\"lnkrane\"gkiqjegwyefwpw\"zwhe\"bqjgyekjenw\"\"\"\"\"\"\"";
+		BlockChiper bc = new BlockChiper(recievedMessage,0);
+		System.out.println(bc.decrypt(224709026));
+		
+		String replyMessage = "ej zdravo ivana, se e okej funkcionira gi dobivam porakite, sto znaci deka uspeshno sme go vospostavile dhke protokolot. pozdrav se gledame";
+		BlockChiper bc1 = new BlockChiper(replyMessage,0);
+		System.out.println(bc1.encrypt(224709026));
 		
 		
 		
