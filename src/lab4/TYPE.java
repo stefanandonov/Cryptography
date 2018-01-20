@@ -1,0 +1,8 @@
+package lab4;
+
+public enum TYPE {
+	ENCRYPTION,
+	DECRYPTION,
+	ENCRYPTION_CBC,
+	DECRYPTION_CBC
+}
